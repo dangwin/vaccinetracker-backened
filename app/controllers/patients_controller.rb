@@ -23,6 +23,12 @@ class PatientsController < ApplicationController
     #         render json {}
     # end 
 
+    def destroy
+        dog = Dog.find_by(id: params[:id])
+        dog.destroy
+        render json: dog
+    end
+
 
     private
 
