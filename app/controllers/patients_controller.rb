@@ -15,18 +15,22 @@ class PatientsController < ApplicationController
         render json: @patient
     end
 
-    # def updated
-    #     @patient.update(patient_params)
-    #     if @patient.save
-    #         render json: @patient
-    #     else 
-    #         render json {}
-    # end 
+
+
+    def update
+        @patient.update(patient_params)
+        if @patient.save
+            render json: @patient
+        else 
+            render json: { errors: @patient.errors.full_messages }
+    end 
+
+
 
     def destroy
-        dog = Dog.find_by(id: params[:id])
-        dog.destroy
-        render json: dog
+        patient = Patient.find_by(id: params[:id])
+        patient.destroy
+        render json: patient
     end
 
 
