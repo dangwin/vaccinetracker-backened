@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+    before_action :find_patient, only: [:show, :edit, :update, :destroy]
 
     def index
         @patients = Patient.all
@@ -19,12 +20,12 @@ class PatientsController < ApplicationController
 
     def update
         @patient.update(patient_params)
-        if @patient.save
-            render json: @patient
-        else 
-            render json: { errors: @patient.errors.full_messages }
+       if @patient.save
+        render json: @patient
+       else 
+        render json: { errors: @patient.errors.full_messages }, status: :unprocessible_entity
     end 
-
+end
 
 
     def destroy
@@ -40,5 +41,8 @@ class PatientsController < ApplicationController
         params.require(:patient).permit(:name, :age, :gender, :vaccine)
     end
 
+    def find_patient
+        @patient = Patient.find(params[:id])
+    end
 
 end
