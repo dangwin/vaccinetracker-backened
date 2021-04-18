@@ -29,9 +29,9 @@ end
 
 
     def destroy
-        patient = Patient.find_by(id: params[:id])
-        patient.destroy
-        render json: patient
+        @patient = Patient.find_by(id: params[:id])
+        @patient.destroy
+        render json: @patient
     end
 
 
