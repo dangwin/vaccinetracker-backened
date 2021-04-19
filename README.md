@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was inspired by what was going on in the world. It is a patient/vaccine tracker that allows a user to add patients the database and with each patient attach a side effect (if any) they may have experienced after their vaccine. To run the app:
 
-Things you may want to cover:
+Fork and clone the backend of the app which is this file.
 
-* Ruby version
+Next go over to the frontend here:
 
-* System dependencies
+https://github.com/dangwin/vaccinetracker-frontend
 
-* Configuration
+Fork and clone. 
 
-* Database creation
+Run rails s on the backend file and open index.html on the frontend file.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Enjoy. 

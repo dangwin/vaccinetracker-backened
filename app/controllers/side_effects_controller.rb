@@ -17,15 +17,33 @@ class SideEffectsController < ApplicationController
       end
     end
 
-    def show
-        binding.pry
-        side_effect = SideEffect.find(side_effect: params[:sideEffect])
+    def update
+      side_effect = SideEffect.find(params[:id])
+
+      if side_effect.update(side_effect: params[:sideEffect])
         render json: side_effect
+      else
+        render json: {error: 'error'}, status: :unprocessible_entity
+      end
+    end
+
+    def show
+        side_effect = SideEffect.find(params[:id])
+        render json: side_effect
+    end
+
+    def destroy
+        side_effect = SideEffect.find(params[:id])
+        if side_effect.destroy
+            render json: {message: 'ok'}
+          else
+            render json: {error: 'error'}, status: :unprocessible_entity
+          end
     end
 
 
         private
-        
+
         def get_json(side_effects)
           side_effects.map do |effect|
             result = effect.attributes
